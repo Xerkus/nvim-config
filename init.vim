@@ -33,7 +33,6 @@
 " Environment {
 
     " Basics {
-        set nocompatible                   " Use ViMproved, don't emulate old vi
         let $VIMHOME = split(&rtp, ',')[0] " Find the Vim path
     " }
 
@@ -53,58 +52,31 @@
 " }
 
 " Bundles {
-
-    " You can define just the groups you need in your config.local.vim
-    if !exists('g:bundle_groups')
-        let g:bundle_groups=['general', 'themes', 'programming', 'php']
-    endif
-
-
-    if !exists('g:override_bundles')
-
-        " General
-            if count(g:bundle_groups, 'general')
-                Bundle 'scrooloose/nerdtree'
-                Bundle 'EvanDotPro/vim-zoom'
-                Bundle 'EvanDotPro/nerdtree-symlink'
-                Bundle 'kien/ctrlp.vim'
-                Bundle 'Lokaltog/vim-powerline', 'develop'
-                Bundle 'L9', '1.1'
-                Bundle 'FuzzyFinder', '4.2.2'
-                Bundle 'terryma/vim-multiple-cursors'
-            endif
-
-        " Themes
-            if count(g:bundle_groups, 'themes')
-                Bundle 'Lucius', '7.1.1'
-                Bundle 'altercation/vim-colors-solarized'
-                Bundle 'spf13/vim-colors'
-            endif
-
-        " General Programming
-            if count(g:bundle_groups, 'programming')
-                Bundle 'tpope/vim-fugitive'
-                Bundle 'airblade/vim-gitgutter'
-                Bundle 'godlygeek/tabular'
-                Bundle 'mattn/webapi-vim'
-                Bundle 'mattn/gist-vim'
-                Bundle 'mattn/emmet-vim'
-                Bundle 'tpope/vim-markdown'
-                Bundle 'scrooloose/syntastic', '3.0.0'
-                Bundle 'joonty/vdebug'
-            endif
-
-        " PHP
-            if count(g:bundle_groups, 'php')
-                " PHP syntax highlighting for 5.4, 5.5+
-                Bundle 'StanAngeloff/php.vim'
-                Bundle 'shawncplus/phpcomplete.vim'
-                Bundle 'EvanDotPro/php_getset.vim'
-                Bundle 'mikehaertl/pdv-standalone'
-            endif
-
-    endif
-
+    Bundle 'EvanDotPro/nerdtree-symlink'
+    Bundle 'EvanDotPro/php_getset.vim'
+    Bundle 'EvanDotPro/vim-zoom'
+    Bundle 'FuzzyFinder', '4.2.2'
+    Bundle 'L9', '1.1'
+    Bundle 'Lokaltog/vim-powerline', 'develop'
+    Bundle 'Lucius', '7.1.1'
+    Bundle 'StanAngeloff/php.vim'
+    Bundle 'airblade/vim-gitgutter'
+    Bundle 'altercation/vim-colors-solarized'
+    Bundle 'chrisbra/vim-diff-enhanced'
+    Bundle 'godlygeek/tabular'
+    Bundle 'joonty/vdebug'
+    Bundle 'kien/ctrlp.vim'
+    Bundle 'mattn/emmet-vim'
+    Bundle 'mattn/gist-vim'
+    Bundle 'mattn/webapi-vim'
+    Bundle 'mikehaertl/pdv-standalone'
+    Bundle 'scrooloose/nerdtree'
+    Bundle 'scrooloose/syntastic', '3.0.0'
+    Bundle 'shawncplus/phpcomplete.vim'
+    Bundle 'spf13/vim-colors'
+    Bundle 'terryma/vim-multiple-cursors'
+    Bundle 'tpope/vim-fugitive'
+    Bundle 'tpope/vim-markdown'
 " }
 
 " General {
