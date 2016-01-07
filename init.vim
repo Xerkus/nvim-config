@@ -1,5 +1,4 @@
 " Modeline and Notes {
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
 "  _____                ______      _  ______          _
 " |  ___|               |  _  \    | | | ___ \        ( )
@@ -36,13 +35,6 @@
         let $VIMHOME = split(&rtp, ',')[0] " Find the Vim path
     " }
 
-    " Vundle {
-        filetype off " Turned back on after loading bundles
-        set rtp+=$VIMHOME/bundle/vundle
-        call vundle#rc()
-        Bundle 'EvanDotPro/vundle', 'feature/refactor-git-treeish-support', {'local': 1}
-    " }
-
     " Local Configuration {
         if filereadable(expand("$VIMHOME/config.local.vim"))
             source $VIMHOME/config.local.vim
@@ -51,36 +43,38 @@
 
 " }
 
+call plug#begin(expand("$VIMHOME/bundle"))
 " Bundles {
-    Bundle 'EvanDotPro/nerdtree-symlink'
-    Bundle 'EvanDotPro/php_getset.vim'
-    Bundle 'EvanDotPro/vim-zoom'
-    Bundle 'FuzzyFinder', '4.2.2'
-    Bundle 'L9', '1.1'
-    Bundle 'Lokaltog/vim-powerline', 'develop'
-    Bundle 'Lucius', '7.1.1'
-    Bundle 'StanAngeloff/php.vim'
-    Bundle 'airblade/vim-gitgutter'
-    Bundle 'altercation/vim-colors-solarized'
-    Bundle 'chrisbra/vim-diff-enhanced'
-    Bundle 'godlygeek/tabular'
-    Bundle 'joonty/vdebug'
-    Bundle 'kien/ctrlp.vim'
-    Bundle 'mattn/emmet-vim'
-    Bundle 'mattn/gist-vim'
-    Bundle 'mattn/webapi-vim'
-    Bundle 'mikehaertl/pdv-standalone'
-    Bundle 'scrooloose/nerdtree'
-    Bundle 'scrooloose/syntastic', '3.0.0'
-    Bundle 'shawncplus/phpcomplete.vim'
-    Bundle 'spf13/vim-colors'
-    Bundle 'terryma/vim-multiple-cursors'
-    Bundle 'tpope/vim-fugitive'
-    Bundle 'tpope/vim-markdown'
+    Plug 'EvanDotPro/php_getset.vim'
+    Plug 'EvanDotPro/vim-zoom'
+    Plug 'FuzzyFinder', {'tag': '4.2.2'}
+    Plug 'L9', {'tag': '1.1'}
+    Plug 'Lokaltog/vim-powerline', {'branch': 'develop'}
+    Plug 'Lucius', {'tag': '7.1.1'}
+    Plug 'StanAngeloff/php.vim'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'chrisbra/vim-diff-enhanced'
+    Plug 'godlygeek/tabular'
+    Plug 'joonty/vdebug'
+    Plug 'kien/ctrlp.vim'
+    Plug 'mattn/emmet-vim'
+    Plug 'mattn/gist-vim'
+    Plug 'mattn/webapi-vim'
+    Plug 'mikehaertl/pdv-standalone'
+    Plug 'scrooloose/nerdtree'
+    Plug 'EvanDotPro/nerdtree-symlink'
+    Plug 'scrooloose/syntastic', {'tag': '3.0.0'}
+    Plug 'shawncplus/phpcomplete.vim'
+    Plug 'terryma/vim-multiple-cursors'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-markdown'
 " }
+call plug#end()
+delc PlugUpgrade " vim-plug is installed as git submodule, this command
+                 " will replace plug.vim inplace so I disable it
 
 " General {
-
     filetype plugin indent on " Automatically detect file types.
     syntax on                 " syntax highlighting
     set mouse=a               " automatically enable mouse usage
@@ -204,12 +198,6 @@
 
     " Toggle numbers.vim
     nnoremap <F3> :NumbersToggle<CR>
-
-    " Support buffer switch on tab even if MiniBufExplorer is not used
-    if !vundle#hasBundle('minibufexpl') && has("gui_running")
-        noremap <C-TAB>   :bnext<CR>
-        noremap <C-S-TAB> :bprev<CR>
-    endif
 
     " ZenCoding-vim
         map <C-z> <C-y>,
