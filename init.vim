@@ -1,56 +1,22 @@
-" Modeline and Notes {
-"
-"  _____                ______      _  ______          _
-" |  ___|               |  _  \    | | | ___ \        ( )
-" | |____   ____ _ _ __ | | | |___ | |_| |_/ / __ ___ |/ ___
-" |  __\ \ / / _` | '_ \| | | / _ \| __|  __/ '__/ _ \  / __|
-" | |___\ V / (_| | | | | |/ / (_) | |_| |  | | | (_) | \__ \
-" \____/ \_/ \__,_|_| |_|___/ \___/ \__\_|  |_|  \___/  |___/
-"            _                              __ _
-"           (_)                            / _(_)
-"     __   ___ _ __ ___     ___ ___  _ __ | |_ _  __ _
-"     \ \ / / | '_ ` _ \   / __/ _ \| '_ \|  _| |/ _` |
-"      \ V /| | | | | | | | (_| (_) | | | | | | | (_| |
-"       \_/ |_|_| |_| |_|  \___\___/|_| |_|_| |_|\__, |
-"                                                 __/ |
-"                                                |___/
-"
-"   This is the personal vim config of Evan Coury (aka EvanDotPro).
-"
-"   Author: Evan Coury, http://blog.evan.pro/
-"      URL: https://github.com/EvanDotPro/vim-configuration
-"
-"   Special thanks to:
-"
-"    - Steve Francia for spf13-vim (https://github.com/spf13/spf13-vim)
-"    - Marc Weber for Vundle(https://github.com/gmarik/vundle)
-"    - Aleksey Khudyakov (aka Xerkus) for adding git-treeish support to Vundle
-"    - All of the authors of the other amazing Vim plugins I use every day.
-"
-" }
-
 " Environment {
+    let $VIMHOME = split(&rtp, ',')[0] " Find the Vim path
 
-    " Basics {
-        let $VIMHOME = split(&rtp, ',')[0] " Find the Vim path
-    " }
+    " Force true color. Sets 'gui_running' feature to 1. Caution: True color
+    " support is not universal, @see https://gist.github.com/XVilka/8346728
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
     " Local Configuration {
         if filereadable(expand("$VIMHOME/config.local.vim"))
             source $VIMHOME/config.local.vim
         endif
     " }
-
 " }
 
 call plug#begin(expand("$VIMHOME/bundle"))
 " Bundles {
     Plug 'EvanDotPro/php_getset.vim'
     Plug 'EvanDotPro/vim-zoom'
-    Plug 'FuzzyFinder', {'tag': '4.2.2'}
-    Plug 'L9', {'tag': '1.1'}
     Plug 'Lokaltog/vim-powerline', {'branch': 'develop'}
-    Plug 'Lucius', {'tag': '7.1.1'}
     Plug 'StanAngeloff/php.vim'
     Plug 'airblade/vim-gitgutter'
     Plug 'altercation/vim-colors-solarized'
@@ -69,6 +35,9 @@ call plug#begin(expand("$VIMHOME/bundle"))
     Plug 'terryma/vim-multiple-cursors'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-markdown'
+    Plug 'vim-scripts/FuzzyFinder', {'tag': '4.2.2'}
+    Plug 'vim-scripts/L9', {'tag': '1.1'}
+    Plug 'vim-scripts/Lucius', {'tag': '7.1.1'}
 " }
 call plug#end()
 delc PlugUpgrade " vim-plug is installed as git submodule, this command
@@ -77,9 +46,7 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
 " General {
     filetype plugin indent on " Automatically detect file types.
     syntax on                 " syntax highlighting
-    set mouse=a               " automatically enable mouse usage
     set virtualedit=all       " allow for cursor beyond last character
-    set history=1000          " Store a ton of history (default is 20)
     set hidden                " allow buffer switching without saving
     scriptencoding utf-8
     set encoding=utf-8
@@ -97,14 +64,6 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
     let g:Powerline_colorscheme = 'lucius' " Powerline colorscheme
     set laststatus=2                       " Always show status bar
     set mousemodel=popup                   " Enable context menu
-
-    " Clean up the GUI in Gvim
-    if has("gui_running")
-        set guioptions-=T
-        set guioptions-=m
-        set guioptions+=LlRrb " bug?
-        set guioptions-=LlRrb
-    endif
 
     set backspace=indent,eol,start " backspace for dummies
     set linespace=0                " no extra spaces between rows

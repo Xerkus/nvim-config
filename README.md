@@ -1,46 +1,27 @@
-# My Ultimate Vim Configuration
-
-Version 1.0.0 Created by Evan Coury
-
-```
-  _____                ______      _  ______          _
- |  ___|               |  _  \    | | | ___ \        ( )
- | |____   ____ _ _ __ | | | |___ | |_| |_/ / __ ___ |/ ___
- |  __\ \ / / _` | '_ \| | | / _ \| __|  __/ '__/ _ \  / __|
- | |___\ V / (_| | | | | |/ / (_) | |_| |  | | | (_) | \__ \
- \____/ \_/ \__,_|_| |_|___/ \___/ \__\_|  |_|  \___/  |___/
-            _                              __ _
-           (_)                            / _(_)
-     __   ___ _ __ ___     ___ ___  _ __ | |_ _  __ _
-     \ \ / / | '_ ` _ \   / __/ _ \| '_ \|  _| |/ _` |
-      \ V /| | | | | | | | (_| (_) | | | | | | | (_| |
-       \_/ |_|_| |_| |_|  \___\___/|_| |_|_| |_|\__, |
-                                                 __/ |
-                                                |___/
-```
+# My Perfect Vim Configuration
 
 ## Introduction
 
-This is the personal vim config of Evan Coury (aka EvanDotPro).
-
-Author: Evan Coury, http://blog.evan.pro/
-URL: https://github.com/EvanDotPro/vim-configuration
+This is the personal neovim config of Aleksei Khudiakov (aka Xerkus).
 
 Special thanks to:
 
-- Steve Francia for [spf13-vim](https://github.com/spf13/spf13-vim)
-- Marc Weber for [Vundle](https://github.com/gmarik/vundle)
-- [Aleksey Khudyakov](https://github.com/Xerkus) (aka Xerkus) for adding git-treeish support to Vundle
+- [Evan Coury](https://github.com/EvanDotPro) for
+  [vim config](https://github.com/EvanDotPro/vim-configuration) I used for
+  years and took as basis for this neovim config
 - All of the authors of the other amazing Vim plugins I use every day.
 
-## Installation (Linux & Mac)
+## Installation (Fedora)
 
-- If you have an existing vim configuration, back it up:
-    - ``for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv $i $i.`date +%Y%m%d`; done``
-- `git clone --recursive https://github.com/EvanDotPro/vim-configuration.git $HOME/edp-vim`
-- `ln -s $HOME/edp-vim $HOME/.vim`
-- `ln -s $HOME/edp-vim/.vimrc $HOME/.vimrc`
-- `vim +BundleInstall! +BundleClean +q` (You may see some errors about colorscheme or other things, just hit enter and ignore them.)
+- Compile neovim or install from Copr
+    - `sudo dnf copr enable dperson/neovim-head`
+    - `sudo dnf install neovim`
+- Install neovim python packages
+    - `sudo dnf install python-devel python3-devel`
+    - `sudo pip2 install neovim`
+    - `sudo pip3 install neovim`
+- `git clone --recursive -b nvim https://github.com/Xerkus/vim-configuration.git $HOME/.config/nvim`
+- `nvim +PlugUpdate +q` (You may see some errors about colorscheme or other things, just hit enter and ignore them.)
 - Copy `config.local.vim.dist` to `config.local.vim` and set your base workspace directory.
 - Create an `override.local.vim` to override settings such as fonts and stuff.
 
@@ -51,6 +32,8 @@ set guifont=Inconsolata\ for\ Powerline\ 11
 ```
 
 ## Features
+
+TODO: update this section
 
 ### Base Customizations
 
