@@ -1,4 +1,4 @@
-# My Perfect Vim Configuration
+# My Perfect NeoVim Configuration
 
 ## Introduction
 
