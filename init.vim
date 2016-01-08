@@ -14,30 +14,32 @@
 
 call plug#begin(expand("$VIMHOME/bundle"))
 " Bundles {
-    Plug 'EvanDotPro/php_getset.vim'
-    Plug 'EvanDotPro/vim-zoom'
-    Plug 'Lokaltog/vim-powerline', {'branch': 'develop'}
-    Plug 'StanAngeloff/php.vim'
+  "  Plug 'EvanDotPro/php_getset.vim'
+  "  Plug 'EvanDotPro/vim-zoom'
+  "  Plug 'StanAngeloff/php.vim'
     Plug 'airblade/vim-gitgutter'
-    Plug 'altercation/vim-colors-solarized'
     Plug 'chrisbra/vim-diff-enhanced'
+    Plug 'bling/vim-airline'
     Plug 'godlygeek/tabular'
     Plug 'joonty/vdebug'
-    Plug 'kien/ctrlp.vim'
-    Plug 'mattn/emmet-vim'
-    Plug 'mattn/gist-vim'
-    Plug 'mattn/webapi-vim'
-    Plug 'mikehaertl/pdv-standalone'
+  "  Plug 'kien/ctrlp.vim'
+  "  Plug 'mattn/emmet-vim'
+  "  Plug 'mattn/gist-vim'
+  "  Plug 'mattn/webapi-vim'
+  "  Plug 'mikehaertl/pdv-standalone'
     Plug 'scrooloose/nerdtree'
     Plug 'EvanDotPro/nerdtree-symlink'
-    Plug 'scrooloose/syntastic', {'tag': '3.0.0'}
-    Plug 'shawncplus/phpcomplete.vim'
-    Plug 'terryma/vim-multiple-cursors'
+  "  Plug 'scrooloose/syntastic', {'tag': '3.0.0'}
+  "  Plug 'shawncplus/phpcomplete.vim'
+  "  Plug 'terryma/vim-multiple-cursors'
     Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-markdown'
-    Plug 'vim-scripts/FuzzyFinder', {'tag': '4.2.2'}
-    Plug 'vim-scripts/L9', {'tag': '1.1'}
+  "  Plug 'tpope/vim-markdown'
+  " Plug 'vim-scripts/FuzzyFinder', {'tag': '4.2.2'}
+  "  Plug 'vim-scripts/L9', {'tag': '1.1'}
     Plug 'vim-scripts/Lucius', {'tag': '7.1.1'}
+    Plug 'shougo/unite.vim'
+    Plug 'whatyouhide/vim-gotham'
+    Plug 'flazz/vim-colorschemes' " temp collection of colorschemes
 " }
 call plug#end()
 delc PlugUpgrade " vim-plug is installed as git submodule, this command
@@ -59,9 +61,14 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
 
     set shortmess+=I                       " Disable splash text
     set t_Co=256                           " Fix colors in the terminal
-    set guifont=Anonymous\ Pro\ 11         " Way better than monospace
-    silent color lucius                    " Vim colorscheme
-    let g:Powerline_colorscheme = 'lucius' " Powerline colorscheme
+  "  set guifont=Anonymous\ Pro\ 11         " Way better than monospace
+  "  colorscheme gotham                     " Vim colorscheme
+  "  colorscheme Tomorrow-Night
+    colorscheme jellybeans
+    let g:airline_theme='gotham'           " Airline colorscheme
+    au VimEnter * colorscheme jellybeans
+    "au VimEnter * let g:airline_theme='gotham'
+    set background=dark
     set laststatus=2                       " Always show status bar
     set mousemodel=popup                   " Enable context menu
 
@@ -84,7 +91,7 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
     set listchars=tab:▸\           " show tabs
     set colorcolumn=81
     "color is for lucius dark
-    hi ColorColumn guibg=#292929
+  "  hi ColorColumn guibg=#292929
 
 " }
 
@@ -167,6 +174,9 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
 " }
 
 " Plugins {
+    " airline {
+        let g:airline_powerline_fonts = 1
+    " }
 
     " NerdTree {
         map <C-e> :NERDTreeToggle<CR>
