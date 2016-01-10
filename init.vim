@@ -16,26 +16,24 @@ call plug#begin(expand("$VIMHOME/bundle"))
 " Bundles {
   "  Plug 'EvanDotPro/php_getset.vim'
   "  Plug 'EvanDotPro/vim-zoom'
-  "  Plug 'StanAngeloff/php.vim'
+    Plug 'StanAngeloff/php.vim'
     Plug 'airblade/vim-gitgutter'
     Plug 'chrisbra/vim-diff-enhanced'
     Plug 'bling/vim-airline'
     Plug 'godlygeek/tabular'
     Plug 'joonty/vdebug'
-  "  Plug 'kien/ctrlp.vim'
   "  Plug 'mattn/emmet-vim'
   "  Plug 'mattn/gist-vim'
   "  Plug 'mattn/webapi-vim'
-  "  Plug 'mikehaertl/pdv-standalone'
+    Plug 'mikehaertl/pdv-standalone'
     Plug 'scrooloose/nerdtree'
     Plug 'EvanDotPro/nerdtree-symlink'
-  "  Plug 'scrooloose/syntastic', {'tag': '3.0.0'}
-  "  Plug 'shawncplus/phpcomplete.vim'
-  "  Plug 'terryma/vim-multiple-cursors'
+    Plug 'scrooloose/syntastic', {'tag': '3.0.0'}
+  "  Plug 'shawncplus/phpcomplete.vim' " patched ctags completion
+  "  Plug 'mkusher/padawan.vim' " php completion implemented in php, @see mkusher/padawan.php
+    Plug 'phpvim/phpcd.vim'
+    Plug 'terryma/vim-multiple-cursors'
     Plug 'tpope/vim-fugitive'
-  "  Plug 'tpope/vim-markdown'
-  " Plug 'vim-scripts/FuzzyFinder', {'tag': '4.2.2'}
-  "  Plug 'vim-scripts/L9', {'tag': '1.1'}
     Plug 'vim-scripts/Lucius', {'tag': '7.1.1'}
     Plug 'shougo/unite.vim'
     Plug 'whatyouhide/vim-gotham'
@@ -61,13 +59,12 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
 
     set shortmess+=I                       " Disable splash text
     set t_Co=256                           " Fix colors in the terminal
-  "  set guifont=Anonymous\ Pro\ 11         " Way better than monospace
+    set guifont=Anonymous\ Pro\ 11         " Way better than monospace
   "  colorscheme gotham                     " Vim colorscheme
   "  colorscheme Tomorrow-Night
     colorscheme jellybeans
     let g:airline_theme='gotham'           " Airline colorscheme
     au VimEnter * colorscheme jellybeans
-    "au VimEnter * let g:airline_theme='gotham'
     set background=dark
     set laststatus=2                       " Always show status bar
     set mousemodel=popup                   " Enable context menu
@@ -88,10 +85,10 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
     set scrolljump=5               " lines to scroll when cursor leaves screen
     set scrolloff=3                " minimum lines to keep above and below cursor
     set list                       " use the listchars settings
-    set listchars=tab:▸\           " show tabs
+    set listchars=tab:▸\ ,eol:¶    " show tabs and lineend
     set colorcolumn=81
-    "color is for lucius dark
-  "  hi ColorColumn guibg=#292929
+    :set keymap=russian-jcukenwin  " i don't remember what : means there
+    :set iminsert=0
 
 " }
 
@@ -103,6 +100,9 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
     set expandtab     " tabs are spaces, not tabs
     set tabstop=4     " an indentation every four columns
     set softtabstop=4 " let backspace delete indent
+    autocmd Filetype html setlocal ts=2 sts=2 sw=2
+    autocmd Filetype htmldjango setlocal ts=2 sts=2 sw=2
+    autocmd Filetype phtml setlocal ts=2 sts=2 sw=2
     " Remove trailing whitespaces and ^M chars
     autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml,phtml,vimrc autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
@@ -112,6 +112,12 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
 
     " Making it so ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
     nnoremap ; :
+
+    " no arrows for you
+    noremap <Up> <NOP>
+    noremap <Down> <NOP>
+    noremap <Left> <NOP>
+    noremap <Right> <NOP>
 
     " Map F1 to Esc to prevent accidental opening of the help window
     map  <F1> <Esc>
@@ -155,18 +161,14 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
     " Ctrl-a for select all
     map <C-A> ggVG
 
-    " Ctrl-b for fuzzy-buffer match
-    map <C-B> :FufBuffer<CR>
+    " Ctrl-b for fuzzy-buffer match, replaced with unite
+    " map <C-B> :FufBuffer<CR>
 
     " For when you forget to sudo.. Really Write the file.
     cmap w!! w !sudo tee % >/dev/null
-    "nmap <silent> <leader>www :w!!<CR> " this causes a nasty delay before saving
 
     " Toggle numbers.vim
     nnoremap <F3> :NumbersToggle<CR>
-
-    " ZenCoding-vim
-        map <C-z> <C-y>,
 
     " pdv-standalone
     nnoremap <C-\>p :call PhpDocSingle()<CR>
@@ -178,6 +180,10 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
         let g:airline_powerline_fonts = 1
     " }
 
+    " phpcd.vim {
+        autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
+    " }
+
     " NerdTree {
         map <C-e> :NERDTreeToggle<CR>
         map <leader>e :NERDTreeFind<CR>
@@ -185,7 +191,7 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
 
         let NERDTreeShowBookmarks=1
         let NERDTreeChDirMode=0
-        let NERDTreeQuitOnOpen=1
+        let NERDTreeQuitOnOpen=0
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
         let NERDTreeMinimalUI=1
@@ -199,10 +205,16 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
         " use "" as parameter to turn tag off
         let g:pdv_cfg_php4guess=0
         let g:pdv_cfg_Package=" "
-        let g:pdv_cfg_Author=" "
+        let g:pdv_cfg_Author="Aleksey Khudyakov <aleksey@xerkus.pro>"
         let g:pdv_cfg_Version=" "
         "let g:pdv_cfg_Copyright=""
         "let g:pdv_cfg_License=""
+    " }
+
+    " vdebug {
+     "   let g:vdebug_options= {"marker_default": '◇'}
+     "   let g:vdebug_options= {"port": '9006'}
+     "   let g:vdebug_features= {'max_data': 50000, 'max_depth':  2, 'max_children': 128}
     " }
 
 " }
