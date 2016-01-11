@@ -36,6 +36,7 @@ call plug#begin(expand("$VIMHOME/bundle"))
     Plug 'tpope/vim-fugitive'
     Plug 'vim-scripts/Lucius', {'tag': '7.1.1'}
     Plug 'shougo/unite.vim'
+    Plug 'shougo/vimproc.vim'
     Plug 'whatyouhide/vim-gotham'
     Plug 'flazz/vim-colorschemes' " temp collection of colorschemes
 " }
@@ -163,6 +164,8 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
 
     " Ctrl-b for fuzzy-buffer match, replaced with unite
     " map <C-B> :FufBuffer<CR>
+    map <C-B> :Unite -auto-resize -prompt=>Buffer>\  -prompt-focus -start-insert
+        \ -buffer-name=buffers buffer<CR>
 
     " For when you forget to sudo.. Really Write the file.
     cmap w!! w !sudo tee % >/dev/null

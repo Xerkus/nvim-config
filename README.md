@@ -32,6 +32,9 @@ Special thanks to:
 
 TODO: update this section
 
+This config needs a lot of improvement but i don't feel like doing it right now.
+Two things to do next: utilize more of Unite.vim and try padawan.vim
+
 ### Base Customizations
 
 This config ships with the following basic customizations for vim:
