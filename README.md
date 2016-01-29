@@ -17,7 +17,7 @@ Special thanks to:
     - `sudo dnf copr enable dperson/neovim-head`
     - `sudo dnf install neovim`
 - Install neovim python packages
-    - `sudo dnf install python-devel python3-devel`
+    - `sudo dnf install gcc redhat-rpm-config python-devel python3-devel`
     - `sudo pip2 install neovim`
     - `sudo pip3 install neovim`
 - `git clone --recursive -b nvim https://github.com/Xerkus/vim-configuration.git $HOME/.config/nvim`
