@@ -21,7 +21,7 @@ Special thanks to:
     - `sudo pip2 install neovim`
     - `sudo pip3 install neovim`
 - `git clone --recursive -b nvim https://github.com/Xerkus/vim-configuration.git $HOME/.config/nvim`
-- `nvim +PlugUpdate +q` (You may see some errors about colorscheme or other
+- `nvim +PlugUpdate +qa` (You may see some errors about colorscheme or other
   things, just hit enter and ignore them.)
 - for phpvim/phpcd.vim
     - php with `pcntl` enabled and `php-pecl-msgpack` installed
