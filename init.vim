@@ -19,7 +19,7 @@ call plug#begin(expand("$VIMHOME/bundle"))
     Plug 'StanAngeloff/php.vim'
     Plug 'airblade/vim-gitgutter'
     Plug 'chrisbra/vim-diff-enhanced'
-    Plug 'bling/vim-airline'
+    Plug 'vim-airline/vim-airline'
     Plug 'godlygeek/tabular'
     Plug 'joonty/vdebug'
   "  Plug 'mattn/emmet-vim'
