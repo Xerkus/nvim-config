@@ -72,6 +72,7 @@
                 Bundle 'L9', '1.1'
                 Bundle 'FuzzyFinder', '4.2.2'
                 Bundle 'terryma/vim-multiple-cursors'
+                Bundle 'chrisbra/vim-diff-enhanced'
             endif
 
         " Themes
