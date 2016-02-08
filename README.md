@@ -20,7 +20,7 @@ Special thanks to:
     - `sudo dnf install gcc redhat-rpm-config python-devel python3-devel`
     - `sudo pip2 install neovim`
     - `sudo pip3 install neovim`
-- `git clone --recursive -b nvim https://github.com/Xerkus/vim-configuration.git $HOME/.config/nvim`
+- `git clone --recursive -b master https://github.com/Xerkus/nvim-config.git $HOME/.config/nvim`
 - `nvim +PlugUpdate +qa` (You may see some errors about colorscheme or other
   things, just hit enter and ignore them.)
 - for phpvim/phpcd.vim
