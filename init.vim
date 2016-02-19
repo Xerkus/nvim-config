@@ -4,6 +4,7 @@
     " Force true color. Sets 'gui_running' feature to 1. Caution: True color
     " support is not universal, @see https://gist.github.com/XVilka/8346728
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
     " Local Configuration {
         if filereadable(expand("$VIMHOME/config.local.vim"))
@@ -37,6 +38,7 @@ call plug#begin(expand("$VIMHOME/bundle"))
     Plug 'vim-scripts/Lucius', {'tag': '7.1.1'}
     Plug 'shougo/unite.vim'
     Plug 'shougo/vimproc.vim'
+    Plug 'shougo/deoplete.nvim'
     Plug 'whatyouhide/vim-gotham'
     Plug 'flazz/vim-colorschemes' " temp collection of colorschemes
 " }
