@@ -90,6 +90,7 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
     set list                       " use the listchars settings
     set listchars=tab:▸\ ,eol:¶    " show tabs and lineend
     set colorcolumn=81
+    set completeopt -=preview
     :set keymap=russian-jcukenwin  " i don't remember what : means there
     :set iminsert=0
 
@@ -183,6 +184,10 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
 " Plugins {
     " airline {
         let g:airline_powerline_fonts = 1
+    " }
+
+    " {
+        let g:deoplete#enable_at_startup = 1
     " }
 
     " phpcd.vim {
