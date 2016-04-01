@@ -29,13 +29,12 @@ call plug#begin(expand("$VIMHOME/bundle"))
     Plug 'mikehaertl/pdv-standalone'
     Plug 'scrooloose/nerdtree'
     Plug 'EvanDotPro/nerdtree-symlink'
-    Plug 'scrooloose/syntastic', {'tag': '3.0.0'}
+    Plug 'scrooloose/syntastic'
   "  Plug 'shawncplus/phpcomplete.vim' " patched ctags completion
   "  Plug 'mkusher/padawan.vim' " php completion implemented in php, @see mkusher/padawan.php
     Plug 'phpvim/phpcd.vim'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'tpope/vim-fugitive'
-    Plug 'vim-scripts/Lucius', {'tag': '7.1.1'}
     Plug 'shougo/unite.vim'
     Plug 'shougo/vimproc.vim'
     Plug 'shougo/deoplete.nvim'
@@ -90,10 +89,10 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
     set list                       " use the listchars settings
     set listchars=tab:▸\ ,eol:¶    " show tabs and lineend
     set colorcolumn=81
-    set completeopt -=preview
     :set keymap=russian-jcukenwin  " i don't remember what : means there
     :set iminsert=0
-
+    set completeopt -=preview
+    "autocmd CompleteDone * pclose!
 " }
 
 " Formatting {

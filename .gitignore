@@ -5,3 +5,4 @@ override.local.vim
 .swap
 .undo
 .views
+.init.vim-rplugin~
