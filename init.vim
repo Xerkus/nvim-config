@@ -13,7 +13,7 @@
     " }
 " }
 
-call plug#begin(expand("$VIMHOME/bundle"))
+call plug#begin(expand("$VIMHOME/plugins"))
 " Bundles {
   "  Plug 'EvanDotPro/php_getset.vim'
   "  Plug 'EvanDotPro/vim-zoom'

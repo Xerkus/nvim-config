@@ -1,4 +1,4 @@
-bundle/*
+plugins/*
 config.local.vim
 override.local.vim
 .backup
