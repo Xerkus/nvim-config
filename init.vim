@@ -3,7 +3,7 @@
 
     " Force true color. Sets 'gui_running' feature to 1. Caution: True color
     " support is not universal, @see https://gist.github.com/XVilka/8346728
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    set termguicolors
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
     " Local Configuration {
