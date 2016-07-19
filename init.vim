@@ -32,7 +32,7 @@ call plug#begin(expand("$VIMHOME/plugins"))
     Plug 'scrooloose/syntastic'
   "  Plug 'shawncplus/phpcomplete.vim' " patched ctags completion
   "  Plug 'mkusher/padawan.vim' " php completion implemented in php, @see mkusher/padawan.php
-    Plug 'phpvim/phpcd.vim'
+    Plug 'phpvim/phpcd.vim', {'do': 'composer update'}
     Plug 'terryma/vim-multiple-cursors'
     Plug 'tpope/vim-fugitive'
     Plug 'shougo/unite.vim'
