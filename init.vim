@@ -189,10 +189,12 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
         let g:deoplete#enable_at_startup = 1
         let g:deoplete#omni_patterns = {}
         let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+        let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+        let g:deoplete#ignore_sources.php = ['omni']
     " }
 
     " phpcd.vim {
-        autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
+       " autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
     " }
 
     " NerdTree {
