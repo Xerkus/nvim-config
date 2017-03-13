@@ -35,8 +35,7 @@ call plug#begin(expand("$VIMHOME/plugins"))
     Plug 'phpvim/phpcd.vim', {'do': 'composer update'}
     Plug 'terryma/vim-multiple-cursors'
     Plug 'tpope/vim-fugitive'
-    Plug 'shougo/unite.vim'
-    Plug 'shougo/vimproc.vim'
+    Plug 'shougo/denite.nvim'
     Plug 'shougo/deoplete.nvim'
     Plug 'whatyouhide/vim-gotham'
     Plug 'flazz/vim-colorschemes' " temp collection of colorschemes
@@ -166,7 +165,7 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
 
     " Ctrl-b for fuzzy-buffer match, replaced with unite
     " map <C-B> :FufBuffer<CR>
-    map <C-B> :Unite -auto-resize -prompt=>Buffer>\  -prompt-focus -start-insert
+    map <C-B> :Denite -auto-resize -prompt=Buffer>\  -mode=normal
         \ -buffer-name=buffers buffer<CR>
 
     " For when you forget to sudo.. Really Write the file.
