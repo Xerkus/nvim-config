@@ -17,7 +17,11 @@ call plug#begin(expand("$VIMHOME/plugins"))
 " Bundles {
   "  Plug 'EvanDotPro/php_getset.vim'
   "  Plug 'EvanDotPro/vim-zoom'
+    Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
     Plug 'StanAngeloff/php.vim'
+    Plug 'HerringtonDarkholme/yats.vim'
+"   Plug 'fatih/vim-go'
+"   Plug 'zchee/deoplete-go', { 'do': 'make'}
     Plug 'airblade/vim-gitgutter'
     Plug 'chrisbra/vim-diff-enhanced'
     Plug 'vim-airline/vim-airline'
@@ -33,10 +37,12 @@ call plug#begin(expand("$VIMHOME/plugins"))
   "  Plug 'shawncplus/phpcomplete.vim' " patched ctags completion
   "  Plug 'mkusher/padawan.vim' " php completion implemented in php, @see mkusher/padawan.php
     Plug 'phpvim/phpcd.vim', {'do': 'composer update'}
+    Plug 'Shougo/vimproc.vim', {'do' : 'make'} " required for tsuquyomi
+    Plug 'Quramy/tsuquyomi'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'tpope/vim-fugitive'
-    Plug 'shougo/denite.nvim'
-    Plug 'shougo/deoplete.nvim'
+    Plug 'shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'whatyouhide/vim-gotham'
     Plug 'flazz/vim-colorschemes' " temp collection of colorschemes
 " }
@@ -105,6 +111,8 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
     autocmd Filetype html setlocal ts=2 sts=2 sw=2
     autocmd Filetype htmldjango setlocal ts=2 sts=2 sw=2
     autocmd Filetype phtml setlocal ts=2 sts=2 sw=2
+    autocmd Filetype json setlocal ts=2 sts=2 sw=2
+    autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
     " Remove trailing whitespaces and ^M chars
     autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml,phtml,vimrc autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
@@ -185,8 +193,12 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
     " }
 
     " {
+        let g:LanguageClient_serverCommands = get(g:, 'LanguageClient_serverCommands', {})
+    " }
+
+    " {
         let g:deoplete#enable_at_startup = 1
-        let g:deoplete#omni_patterns = {}
+        let g:deoplete#omni_patterns = get(g:, 'deoplete#omni_patterns', {})
         let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
         let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
         let g:deoplete#ignore_sources.php = ['omni']
