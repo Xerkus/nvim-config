@@ -19,6 +19,7 @@ call plug#begin(expand("$VIMHOME/plugins"))
   "  Plug 'EvanDotPro/vim-zoom'
     Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
     Plug 'StanAngeloff/php.vim'
+    Plug 'othree/html5.vim'
     Plug 'HerringtonDarkholme/yats.vim'
 "   Plug 'fatih/vim-go'
 "   Plug 'zchee/deoplete-go', { 'do': 'make'}
@@ -37,6 +38,7 @@ call plug#begin(expand("$VIMHOME/plugins"))
   "  Plug 'shawncplus/phpcomplete.vim' " patched ctags completion
   "  Plug 'mkusher/padawan.vim' " php completion implemented in php, @see mkusher/padawan.php
     Plug 'phpvim/phpcd.vim', {'do': 'composer update'}
+    Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
     Plug 'Shougo/vimproc.vim', {'do' : 'make'} " required for tsuquyomi
     Plug 'Quramy/tsuquyomi'
     Plug 'terryma/vim-multiple-cursors'
@@ -96,7 +98,7 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
     set colorcolumn=81
     :set keymap=russian-jcukenwin  " i don't remember what : means there
     :set iminsert=0
-    set completeopt -=preview
+    "set completeopt -=preview
     "autocmd CompleteDone * pclose!
 " }
 
@@ -115,6 +117,7 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
     autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
     " Remove trailing whitespaces and ^M chars
     autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml,phtml,vimrc autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+    autocmd FileType php LanguageClientStart
 
 " }
 
@@ -195,11 +198,18 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
     " {
         let g:LanguageClient_serverCommands = get(g:, 'LanguageClient_serverCommands', {})
     " }
+    
+    " {
+        let g:tsuquyomi_completion_preview = 1
+    " }
 
     " {
         let g:deoplete#enable_at_startup = 1
+        let g:deoplete#enable_refresh_always = 0
         let g:deoplete#omni_patterns = get(g:, 'deoplete#omni_patterns', {})
-        let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+       " let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+        let g:deoplete#omni_patterns.javascript = '[^. \t0-9]\.([a-zA-Z_]\w*)?'
+        let g:deoplete#omni_patterns.typescript = '[^. \t0-9]\.([a-zA-Z_]\w*)?'
         let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
         let g:deoplete#ignore_sources.php = ['omni']
     " }
