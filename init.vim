@@ -4,7 +4,7 @@
     " Force true color. Sets 'gui_running' feature to 1. Caution: True color
     " support is not universal, @see https://gist.github.com/XVilka/8346728
     set termguicolors
-    let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+    set mouse=a
 
     " Local Configuration {
         if filereadable(expand("$VIMHOME/config.local.vim"))
@@ -60,14 +60,14 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
     scriptencoding utf-8
     set encoding=utf-8
     autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-    autocmd VimEnter * execute "cd" fnameescape(g:startDir)
+    autocmd vimenter * silent! lcd %:p:h
+    " autocmd VimEnter * execute "cd" fnameescape(g:startDir)
 
 " }
 
 " Vim UI {
 
     set shortmess+=I                       " Disable splash text
-    set t_Co=256                           " Fix colors in the terminal
     set guifont=Anonymous\ Pro\ 11         " Way better than monospace
   "  colorscheme gotham                     " Vim colorscheme
   "  colorscheme Tomorrow-Night
@@ -115,6 +115,7 @@ delc PlugUpgrade " vim-plug is installed as git submodule, this command
     autocmd Filetype phtml setlocal ts=2 sts=2 sw=2
     autocmd Filetype json setlocal ts=2 sts=2 sw=2
     autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
+    autocmd Filetype typescript setlocal ts=2 sts=2 sw=2
     " Remove trailing whitespaces and ^M chars
     autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml,phtml,vimrc autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
     autocmd FileType php LanguageClientStart
