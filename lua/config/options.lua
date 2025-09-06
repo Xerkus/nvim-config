@@ -1,5 +1,6 @@
 local opt = vim.opt
 
+opt.shortmess:append("I") -- no splash screen
 opt.termguicolors = true -- true colors, probably default now
 opt.expandtab = true -- use spaces instead of tabs
 opt.mouse = "a" -- mouse mode, probably default now
