@@ -1,3 +1,5 @@
+-- options loaded before any plugins
+
 local opt = vim.opt
 
 opt.shortmess:append("I") -- no splash screen
@@ -15,4 +17,11 @@ opt.incsearch = true -- search while typing search pattern
 opt.scrolljump = 5 -- scroll that much when cursor leaves screen
 opt.scrolloff = 3 -- keep that many lines visible around cursor
 opt.virtualedit = "all" -- allow cursor past line endings
+opt.colorcolumn = "121,+1" -- show visual guide for line length limit
+opt.undofile = true -- enable persistent undo
+
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+vim.g.mapleader = "\\"
+vim.g.maplocalleader = "\\"
 

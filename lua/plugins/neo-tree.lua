@@ -17,6 +17,13 @@ return {
         },
       },
     },
+    keys = {
+      {
+        "<leader>t",
+        "<cmd>Neotree toggle<cr>",
+        desc = "Toggle Neotree pane",
+      },
+    },
   },
 }
 
